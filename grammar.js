@@ -171,6 +171,7 @@ module.exports = grammar(require("./embedded/ocaml"), {
         // $.method_invocation,
         // $.object_expression,
         $.parenthesized_expression,
+        $.json,
         // $.ocamlyacc_value,
         // $._extension
       ),
@@ -180,6 +181,8 @@ module.exports = grammar(require("./embedded/ocaml"), {
 
     grouped_expression: ($) => seq("(", $.expression, ")"),
     unpack: ($) => prec.left(PREC.prefix, seq("...", $._simple_expression)),
+    json: ($) => seq("{", commaSep1($._jsonkv), "}"),
+    _jsonkv: ($) => seq($.string, ":", $._expression),
 
     switch_expression: ($) =>
       seq("switch", "(", $.expression, ")", "{", repeat($._switch_case), "}"),

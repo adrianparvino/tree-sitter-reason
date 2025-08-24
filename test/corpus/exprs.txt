@@ -822,3 +822,23 @@ f((_, xy) => xy, "")
             (value_path
               (value_name))))
         (string)))))
+
+================================================================================
+JSON
+================================================================================
+
+{"x": "a", "y": 1}
+
+--------------------------------------------------------------------------------
+
+(compilation_unit
+  (expression_statement
+    (expression
+      (json
+        (string
+          (string_content))
+        (string
+          (string_content))
+        (string
+          (string_content))
+        (number)))))

@@ -580,6 +580,10 @@
         "named": true
       },
       {
+        "type": "json",
+        "named": true
+      },
+      {
         "type": "list_expression",
         "named": true
       },
@@ -2316,6 +2320,25 @@
         },
         {
           "type": "item_attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "json",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
