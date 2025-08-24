@@ -28,7 +28,10 @@ const PREC = {
 module.exports = grammar(require("./embedded/ocaml"), {
   name: "reason",
 
-  conflicts: ($) => [[$._value_name, $._jsx_identifier]],
+  conflicts: ($) => [
+    [$._value_name, $._jsx_identifier],
+    [$.function_type, $.tuple_type, $.constructed_type, $.hash_type]
+  ],
 
   externals: ($) => [
     // Ocaml specific
@@ -70,6 +73,8 @@ module.exports = grammar(require("./embedded/ocaml"), {
         $.module_binding,
         $._semicolon,
       ),
+
+    unit: ($) => seq("(", ")"),
 
     module_binding: ($) =>
       seq(
@@ -165,7 +170,7 @@ module.exports = grammar(require("./embedded/ocaml"), {
         // $.object_copy_expression,
         // $.method_invocation,
         // $.object_expression,
-        // $.parenthesized_expression,
+        $.parenthesized_expression,
         // $.ocamlyacc_value,
         // $._extension
       ),
@@ -486,13 +491,13 @@ module.exports = grammar(require("./embedded/ocaml"), {
       ),
 
     function_type: ($) =>
-      prec.right(PREC.match, seq("(", commaSep1($._type), ")", "=>", $._type)),
+      prec.right(PREC.match, seq("(", commaSep1(choice($.typed_label, $._type)), ")", "=>", $._type)),
 
     record_declaration: ($) =>
       seq("{", sep1(",", $.field_declaration), optional(","), "}"),
 
-    // typed_label: ($) =>
-    //   prec.left(PREC.seq, seq("~", $._label_name, ":", $._type)),
+    typed_label: ($) =>
+      prec.left(PREC.seq, seq("~", $._label_name, ":", $._type)),
 
     _extensible_type_binding: ($) =>
       seq(

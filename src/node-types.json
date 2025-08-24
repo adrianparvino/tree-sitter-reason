@@ -584,6 +584,10 @@
         "named": true
       },
       {
+        "type": "parenthesized_expression",
+        "named": true
+      },
+      {
         "type": "prefix_expression",
         "named": true
       },
@@ -1894,6 +1898,10 @@
       "types": [
         {
           "type": "_type",
+          "named": true
+        },
+        {
+          "type": "typed_label",
           "named": true
         }
       ]
@@ -3352,6 +3360,25 @@
     }
   },
   {
+    "type": "parenthesized_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_sequence_expression",
+          "named": true
+        },
+        {
+          "type": "attribute_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parenthesized_module_type",
     "named": true,
     "fields": {},
@@ -4239,6 +4266,25 @@
         },
         {
           "type": "_class_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typed_label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_type",
+          "named": true
+        },
+        {
+          "type": "label_name",
           "named": true
         }
       ]
