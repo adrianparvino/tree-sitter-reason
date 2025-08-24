@@ -175,6 +175,9 @@ module.exports = grammar(require("./embedded/ocaml"), {
         // $._extension
       ),
 
+    parenthesized_expression: ($) =>
+      parenthesize($._expression),
+
     grouped_expression: ($) => seq("(", $.expression, ")"),
     unpack: ($) => prec.left(PREC.prefix, seq("...", $._simple_expression)),
 
@@ -380,6 +383,7 @@ module.exports = grammar(require("./embedded/ocaml"), {
         seq("~", $._label_name, $._typed, "=", choice($.expression, "?")),
       ),
 
+    _argument: ($) => choice($._expression, $.labeled_argument),
     variant_expression: ($) =>
       prec.right(
         choice(

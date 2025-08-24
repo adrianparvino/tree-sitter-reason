@@ -859,7 +859,7 @@
       "required": false,
       "types": [
         {
-          "type": "_simple_expression",
+          "type": "_expression",
           "named": true
         },
         {
@@ -3364,15 +3364,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "_sequence_expression",
-          "named": true
-        },
-        {
-          "type": "attribute_id",
+          "type": "_expression",
           "named": true
         }
       ]
@@ -4660,10 +4656,6 @@
   {
     "type": "assign_operator",
     "named": true
-  },
-  {
-    "type": "begin",
-    "named": false
   },
   {
     "type": "class",
