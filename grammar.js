@@ -105,6 +105,7 @@ module.exports = grammar(require("./embedded/ocaml"), {
         optional("rec"),
         field("pattern", choice($._value_name, $.record_destructure)),
         optional(seq(":", $._type)),
+        optional(choice(seq("(", commaSep0($._parameter), ")"), $._parameter)),
         "=",
         $.expression,
         $._semicolon,

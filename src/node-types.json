@@ -2608,6 +2608,10 @@
       "required": true,
       "types": [
         {
+          "type": "_parameter",
+          "named": true
+        },
+        {
           "type": "_type",
           "named": true
         },
